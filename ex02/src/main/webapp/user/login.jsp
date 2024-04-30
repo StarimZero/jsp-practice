@@ -1,28 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <style>
+    	span {width:100px;}
+    </style>
+    
 <div class="row mt-5 justify-content-center">
-	<div class="col-8 col-md-6 clo-lg-4">
+	<div class="col-8 col-md-6 col-lg-5">
 		<div class = "card">
-            <div class = "card-header text-center">
-                <h1 class = "py-2">로그인</h1>
-            </div>
             <div class = "card-body">
-                <form action="" name = "frm" method="post">
-                    <input name = "uid" type="text" placeholder="아이디" class="form-control mb-3">
-                    <input name = "upass" type="password" placeholder="비밀번호" class="form-control mb-3">
-                    <button class = "btn btn-primary w-100">로그인</button>
-                </form>
+            	<h1>Want Login?</h1>
+            	<form name="frm">
+            		<div class="input-group mb-3">
+            		<span class="input-group-text justify-content-center">I D</span>
+            		<input  class="form-control" name ="uid">
+            		</div>
+            		<div class="input-group mb-3">
+            		<span class="input-group-text  justify-content-center"  >Password</span>
+            		<input  class="form-control" name="upass" type="password">
+            		</div>
+            		<button class = "btn btn-primary w-100">Login</button>
+            		<hr>
+            		<div class="div class=container justify-content-center">
+            		<a class="btn btn-danger mx-2" href="https://google.com" target="_blank">login With Google</a>
+            		<a class="btn btn-success mx-2" href="https://naver.com" target="_blank">login With Naver</a>
+            		<a class = "btn btn-warning mx-2" href="https://www.kakaocorp.com/page/" target="_blank">login With Kakao</a>
+            		</div>
+            		<hr>
+            		<div class="text-center">
+            		<a href="https://naver.com" target="_blank">Forget ID?</a><br>
+            		<a href="https://gemini.google.com/app" target="_blank">Forget Password?</a><br>
+            		<a href="https://kr.tradingview.com/chart/dJyLIExu/?symbol=KRX%3A178320" target="_blank">Create Account</a>
+            		</div>
+            	</form>
             </div>
         </div>
 	</div>
 </div>
 
+
+
+
 <script>
 	$(frm.uid).focus();
     $(frm).on("submit", function(e){
         e.preventDefault();
-        let uid = $(frm.uid).val(); //frm에있는 uid를 받아서 val값을 uid변수에 저장하기
-        let upass = $(frm.upass).val();
+        const uid = $(frm.uid).val(); //frm에있는 uid를 받아서 val값을 uid변수에 저장하기
+        const upass = $(frm.upass).val();
         if(uid == "" || upass == ""){
             alert("아이디 또는 비밀번호를 입력하세요.");
             $(frm.uid).focus();//커서가 여기서 깜빡이게 하기. 
@@ -32,7 +55,7 @@
             $.ajax({
                 type : "post", //post를찾아나선다.
                 url : "/user/login", // users/login이 아니다. -> 원래 /login 이였는데(index.js에 있어서) users로 옮겼기 때문에 /users/login 가 됐다. 
-                data : {uid, upass}, //키랑 변수랑같으면 생략가능 //uid:uid 앞에있는게 파라미터로 받은거 
+                data : {uid, upass}, //키랑 변수랑같으면 생략가능
                 success : function(data){ //js에서 나온 결과가 data이다.  data는 변수다. 정해진것은 함수정의까지다. 
                     console.log(data);
                 		//alert(data);
