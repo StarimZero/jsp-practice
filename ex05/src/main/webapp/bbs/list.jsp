@@ -46,7 +46,7 @@
            		success: function (data) { //url의 데이터가 여기로 들어감 
                 		// alert("성공~");
                 		const temp = Handlebars.compile($("#temp_bbs").html()); //아이디가 tempPosts인걸 html로 compile해서 temp에 저장 
-                		$("#div_bbs").html(temp(data)); // temp에 data를 넣고  divPosts에 출력   
+                		$("#div_bbs").html(temp(data)); // temp에 data를 넣고  div_bbs에 출력   
                 		
                  		//$("#page").html(page); //데이터 불러오기 성공을 하면 #page를 출력해라  이거없으면 번호가 가감이 안된다. 
                  		//if(page == 1){ //1페이지일대 이전버튼안눌리게하기
