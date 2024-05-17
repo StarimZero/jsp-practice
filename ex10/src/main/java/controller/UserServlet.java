@@ -55,11 +55,13 @@ public class UserServlet extends HttpServlet {
 			
 			int result =0; //null이면 이값이 나오겠지 if문을 안할거니 
 			vo = dao.read(uid);
+			
 			if(vo.getUid() != null) {
 				if(vo.getUpass().equals(upass)) {
+					System.out.println(".............." + vo.toString());
 					HttpSession session=request.getSession();
-					session.setAttribute("user", vo);
-					session.setAttribute("uid", uid);
+					session.setAttribute("uname", vo.getUname());
+					session.setAttribute("uid", vo.getUid());
 					result=1;
 				}else {
 					result=2;
